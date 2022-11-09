@@ -25,7 +25,7 @@ public class CustomerService {
     public Customer findCustomerByPetId(Long id) throws ChangeSetPersister.NotFoundException {
         Optional<Pet> optionalPet = petRepository.findById(id);
         Pet pet = optionalPet.orElseThrow(ChangeSetPersister.NotFoundException::new);
-        return customerRepository.findByPetsContaining(pet);
+        return customerRepository.findByPetsId(id);
     }
     public List<Customer> getAllCustomers(){ return customerRepository.findAll();}
 }
