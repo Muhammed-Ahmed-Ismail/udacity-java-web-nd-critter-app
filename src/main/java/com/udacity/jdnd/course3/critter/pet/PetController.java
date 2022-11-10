@@ -2,7 +2,10 @@ package com.udacity.jdnd.course3.critter.pet;
 
 import com.udacity.jdnd.course3.critter.utils.PetEntityMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,7 +29,17 @@ public class PetController {
 
     @GetMapping("/{petId}")
     public PetDTO getPet(@PathVariable long petId) {
-        throw new UnsupportedOperationException();
+
+        Pet pet = null;
+        try {
+            pet = petService.getPet(petId);
+            return petEntityMapper.fromEntityToDto(pet);
+        } catch (ChangeSetPersister.NotFoundException e) {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "pet not found"
+            );
+        }
+
     }
 
     @GetMapping

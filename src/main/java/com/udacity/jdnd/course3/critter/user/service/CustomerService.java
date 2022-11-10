@@ -27,5 +27,8 @@ public class CustomerService {
         Pet pet = optionalPet.orElseThrow(ChangeSetPersister.NotFoundException::new);
         return customerRepository.findByPetsId(id);
     }
-    public List<Customer> getAllCustomers(){ return customerRepository.findAll();}
+    public List<Customer> getAllCustomers(){
+        List<Customer> customers = customerRepository.findAll();
+        return customers;
+    }
 }
