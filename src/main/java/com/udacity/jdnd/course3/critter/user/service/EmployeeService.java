@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -17,6 +18,7 @@ import java.util.*;
 //import java.util.
 
 @Service
+@Transactional
 public class EmployeeService {
     @Autowired
     EmployeeRepository employeeRepository;

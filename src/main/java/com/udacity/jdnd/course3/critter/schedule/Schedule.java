@@ -15,7 +15,7 @@ public class Schedule {
     @GeneratedValue
     private Long id;
     @ElementCollection
-    private List<EmployeeSkill> activities;
+    private Set<EmployeeSkill> activities;
 
     private LocalDate date;
 
@@ -35,11 +35,11 @@ public class Schedule {
         return id;
     }
 
-    public List<EmployeeSkill> getActivities() {
+    public Set<EmployeeSkill> getActivities() {
         return activities;
     }
 
-    public void setActivities(List<EmployeeSkill> activities) {
+    public void setActivities(Set<EmployeeSkill> activities) {
         this.activities = activities;
     }
 

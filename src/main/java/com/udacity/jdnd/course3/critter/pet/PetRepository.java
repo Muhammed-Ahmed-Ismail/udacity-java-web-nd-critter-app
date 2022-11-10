@@ -8,4 +8,5 @@ import java.util.List;
 @Repository
 public interface PetRepository extends JpaRepository<Pet, Long> {
     List<Pet> getPetByOwnerId(Long ownerId);
+    List<Pet> findAllByIdIn(List<Long> ids);
 }

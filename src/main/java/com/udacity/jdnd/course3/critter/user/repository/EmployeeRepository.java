@@ -15,4 +15,5 @@ public interface EmployeeRepository extends JpaRepository<Employee,Long> {
      Set<Employee> findAllByDaysAvailableContaining(DayOfWeek dayOfWeek);
 //     @Query("select e from Employee e where e.daysAvailable like concat('%', ?1, '%') and e.skills = ?2")
      Set<Employee> findAllByDaysAvailableContainingAndSkillsIsIn(DayOfWeek dayOfWeek , Set<EmployeeSkill> employeeSkills);
+     List<Employee> findAllByIdIn(List<Long> ids);
 }
